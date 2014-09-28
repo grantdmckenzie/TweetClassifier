@@ -5,4 +5,5 @@ Java-based Tweet classifier based on Mallet's Naive Bayes classifier.  Currently
 * Social / Recreation
 * Other
 
+TODO: Better Classification based on more than single user classification.  Add "Shopping" as category.
 
