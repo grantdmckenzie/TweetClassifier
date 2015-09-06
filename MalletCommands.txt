@@ -1,4 +1,4 @@
-bin/mallet import-file --input ../Dropbox/TweetClassification/sampleclass.csv --remove-stopwords --output tweets.mallet
+bin/mallet import-file --input ../Document/WorkingDir/tweetclass/sampleclass.csv --remove-stopwords --output tweets.mallet
 bin/mallet train-classifier --input tweets.mallet --output-classifier tweets.classifier
 bin/mallet train-classifier --input tweets.mallet --training-portion 0.9
 

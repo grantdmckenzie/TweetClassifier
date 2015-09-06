@@ -164,17 +164,26 @@ public class CarsiClassifier {
 	        //  that includes the instance, the classifier, and the                                            
 	        //  classification results (the labeling). Here we only                                            
 	        //  care about the Labeling.    
-	        out.print("{\"response\":[");
+	        String[] labels = {"workschool", "shopping", "otherfam","recreation","dropoff","social","none","eat", "workother"};
+	        int counter = 0;
+	        out.print("{\"code\":200,\"status\":\"success\",\"response\":{");
 	        while (instances.hasNext()) {
 	            Labeling labeling = classifier.classify(instances.next()).getLabeling();
 	            for (int rank = 0; rank < labeling.numLocations(); rank++){
-	                out.print("\""+labeling.getLabelAtRank(rank) + "\":" + labeling.getValueAtRank(rank) + "");
-	                if (rank < labeling.numLocations()-1)
-	                	out.print(", ");
+	            	for(int i =0; i < labels.length; i++) {
+	            		String lbl = labeling.getLabelAtRank(rank).toString();
+	            		if (labels[i].equals(lbl)) {
+	            			counter++;
+	            			out.print("\""+labeling.getLabelAtRank(rank) + "\":" + labeling.getValueAtRank(rank) + "");
+	    	                if (counter < labels.length)
+	    	                	out.print(", ");
+	            		}
+	            	}
+	                
 	            }
 	            // System.out.println();
 	        }
-	        out.print("]}");
+	        out.print("}}");
 	    }
 
 	}
